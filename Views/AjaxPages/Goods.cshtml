@@ -1,0 +1,49 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/app")
+}
+
+<div class="page-header">
+    <h1>GoodService</h1>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Goods</h2>
+            </div>
+            <div class="panel-body">
+                <ul class="list-unstyled" data-bind="foreach: goods">
+                    <li>
+                        <strong><span data-bind="text: Title"></span></strong>: <span data-bind="text: Price"></span>
+                        <small><a href="#" data-bind="click: $parent.getGoodDetail">Details</a></small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
+    </div>
+
+    <!-- ko if:detail() -->
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Detail</h2>
+            </div>
+            <table class="table">
+                <tr><td>Название</td><td data-bind="text: detail().Title"></td></tr>
+                <tr><td>Цена</td><td data-bind="text: detail().Price"></td></tr>
+                <tr><td>Колличество</td><td data-bind="text: detail().Amount"></td></tr>
+                <tr><td>Фото</td><td data-bind="text: detail().UrlImage"></td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- /ko -->
+
+    <div class="col-md-4">
+        <!-- TODO: Add new book -->
+    </div>
+</div>
